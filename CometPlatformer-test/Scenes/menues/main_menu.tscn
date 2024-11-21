@@ -1,0 +1,127 @@
+[gd_scene load_steps=5 format=3 uid="uid://dedcgepmwy0md"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bn1lw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oxa66"]
+bg_color = Color(0.800491, 0.800491, 0.800491, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 3.4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wxnsw"]
+bg_color = Color(0.497474, 0.497474, 0.497474, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 3.4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kgruk"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+offset_left = 347.0
+offset_top = 124.0
+offset_right = 782.0
+offset_bottom = 193.0
+theme_override_colors/font_color = Color(0.881512, 0.542695, 0.324644, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Comet Platformer"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -142.5
+offset_top = -44.0
+offset_right = 142.5
+offset_bottom = 246.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="start_button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bn1lw")
+theme_override_styles/hover = SubResource("StyleBoxFlat_oxa66")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wxnsw")
+theme_override_styles/normal = SubResource("StyleBoxFlat_kgruk")
+text = "Start Game"
+
+[node name="options_button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bn1lw")
+theme_override_styles/hover = SubResource("StyleBoxFlat_oxa66")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wxnsw")
+theme_override_styles/normal = SubResource("StyleBoxFlat_kgruk")
+text = "Options"
+
+[node name="Level_Select" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bn1lw")
+theme_override_styles/hover = SubResource("StyleBoxFlat_oxa66")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wxnsw")
+theme_override_styles/normal = SubResource("StyleBoxFlat_kgruk")
+text = "Level Select
+"
+
+[node name="exit_button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bn1lw")
+theme_override_styles/hover = SubResource("StyleBoxFlat_oxa66")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wxnsw")
+theme_override_styles/normal = SubResource("StyleBoxFlat_kgruk")
+text = "Exit Game"

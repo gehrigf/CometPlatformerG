@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://edg1pdfr8iu4"]
+
+[ext_resource type="Script" path="res://Scripts/unstable_platform.gd" id="1_4q864"]
+[ext_resource type="Texture2D" uid="uid://dwmjk6u66c8b2" path="res://icon.svg" id="1_hst03"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yhk4g"]
+size = Vector2(128, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cooia"]
+size = Vector2(122, 2)
+
+[node name="Unstable Platform" type="StaticBody2D"]
+collision_layer = 16
+script = ExtResource("1_4q864")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1, 0.25)
+texture = ExtResource("1_hst03")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_yhk4g")
+
+[node name="Break Timer" type="Timer" parent="."]
+wait_time = 0.75
+one_shot = true
+
+[node name="Repair Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="Break Region" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Break Region"]
+position = Vector2(0, -17)
+shape = SubResource("RectangleShape2D_cooia")
+
+[connection signal="timeout" from="Break Timer" to="." method="_on_break_timer_timeout"]
+[connection signal="timeout" from="Repair Timer" to="." method="_on_repair_timer_timeout"]
+[connection signal="body_entered" from="Break Region" to="." method="_on_break_region_body_entered"]
