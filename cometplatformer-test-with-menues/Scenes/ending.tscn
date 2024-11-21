@@ -1,0 +1,72 @@
+[gd_scene load_steps=5 format=3 uid="uid://bkcb7aukyxkxa"]
+
+[ext_resource type="Script" path="res://Scripts/ending.gd" id="1_fcok3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jeuea"]
+font_size = 86
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mdxyd"]
+particle_flag_disable_z = true
+direction = Vector3(1, 1, 0)
+gravity = Vector3(0, 98, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 150.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nn2bw"]
+particle_flag_disable_z = true
+direction = Vector3(-1, 1, 0)
+gravity = Vector3(0, 98, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 200.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+
+[node name="ending" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fcok3")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Thanks for 
+playing!"
+label_settings = SubResource("LabelSettings_jeuea")
+horizontal_alignment = 1
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(135, -31)
+amount = 150
+process_material = SubResource("ParticleProcessMaterial_mdxyd")
+lifetime = 10.0
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+position = Vector2(1022, -22)
+amount = 150
+process_material = SubResource("ParticleProcessMaterial_nn2bw")
+lifetime = 10.0

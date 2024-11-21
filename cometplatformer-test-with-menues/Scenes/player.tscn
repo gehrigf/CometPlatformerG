@@ -1,0 +1,140 @@
+[gd_scene load_steps=19 format=3 uid="uid://dw7cavy56burq"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_63chh"]
+[ext_resource type="Texture2D" uid="uid://dwmjk6u66c8b2" path="res://icon.svg" id="1_yjqie"]
+[ext_resource type="Texture2D" uid="uid://buv7o81o8xbrk" path="res://Sprites/player_spritesheet.png" id="3_qke6r"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mn565"]
+radius = 11.0
+height = 38.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_30okg"]
+atlas = ExtResource("3_qke6r")
+region = Rect2(0, 120, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3to8y"]
+atlas = ExtResource("3_qke6r")
+region = Rect2(60, 120, 60, 60)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fxege"]
+load_path = "res://.godot/imported/player_spritesheet.png-c9895101c1dfecf6f804bfec961ca441.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w56km"]
+atlas = SubResource("CompressedTexture2D_fxege")
+region = Rect2(0, 0, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i0lw2"]
+atlas = SubResource("CompressedTexture2D_fxege")
+region = Rect2(60, 0, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u5jwb"]
+atlas = SubResource("CompressedTexture2D_fxege")
+region = Rect2(120, 0, 60, 60)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5v8np"]
+load_path = "res://.godot/imported/player_spritesheet.png-c9895101c1dfecf6f804bfec961ca441.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rt2nk"]
+atlas = SubResource("CompressedTexture2D_5v8np")
+region = Rect2(0, 60, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u4u5k"]
+atlas = SubResource("CompressedTexture2D_5v8np")
+region = Rect2(60, 60, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_enkn2"]
+atlas = SubResource("CompressedTexture2D_5v8np")
+region = Rect2(120, 60, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fk7jl"]
+atlas = SubResource("CompressedTexture2D_5v8np")
+region = Rect2(180, 60, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xqk70"]
+atlas = SubResource("CompressedTexture2D_5v8np")
+region = Rect2(240, 60, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndmck"]
+atlas = SubResource("CompressedTexture2D_5v8np")
+region = Rect2(300, 60, 60, 60)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w4uqp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_30okg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3to8y")
+}],
+"loop": true,
+"name": &"air",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w56km")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i0lw2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u5jwb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rt2nk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u4u5k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_enkn2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fk7jl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xqk70")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ndmck")
+}],
+"loop": true,
+"name": &"run",
+"speed": 12.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 17
+collision_mask = 18
+script = ExtResource("1_63chh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.179688, 0.304688)
+texture = ExtResource("1_yjqie")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_mn565")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CapsuleShape2D_mn565")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -5)
+scale = Vector2(0.85, 0.85)
+sprite_frames = SubResource("SpriteFrames_w4uqp")
+animation = &"air"
+frame_progress = 0.929303
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

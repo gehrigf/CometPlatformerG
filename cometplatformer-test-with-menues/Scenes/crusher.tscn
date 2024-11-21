@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://b4o68bupri4yr"]
+
+[ext_resource type="Script" path="res://Scripts/crusher.gd" id="1_288t3"]
+[ext_resource type="Texture2D" uid="uid://d3utmodyn3yyx" path="res://Sprites/crusher.png" id="2_j5yfg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_36hge"]
+size = Vector2(127, 127)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0fshk"]
+size = Vector2(120, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_toxd4"]
+size = Vector2(128, 580)
+
+[node name="Crusher" type="CharacterBody2D"]
+collision_layer = 10
+collision_mask = 2
+script = ExtResource("1_288t3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0.999998, 1.31182)
+scale = Vector2(2.13333, 2.11039)
+texture = ExtResource("2_j5yfg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_36hge")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(1, 56.5)
+shape = SubResource("RectangleShape2D_0fshk")
+
+[node name="Detection Area" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection Area"]
+position = Vector2(0, 354)
+shape = SubResource("RectangleShape2D_toxd4")
+
+[node name="Recovery Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Ascend Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="Peak Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Recovery Timer" to="." method="_on_recovery_timer_timeout"]
+[connection signal="timeout" from="Ascend Timer" to="." method="_on_ascend_timer_timeout"]
+[connection signal="timeout" from="Peak Timer" to="." method="_on_peak_timer_timeout"]
